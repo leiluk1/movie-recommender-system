@@ -7,9 +7,9 @@ This report provides an overview and analysis of the Movie Recommender System de
 
 ## Data Analysis
 
-The data analysis phase involved exploring and understanding the dataset used. First of all, the key notes about data from *MovieLens*: in the main dataset there are iformation about 943 users and 1682 movies. Moreover, in all datasets users and movies ids start from $1$ (not from $0$). 
+The data analysis phase involved exploring and understanding the dataset used. First of all, the key notes about data from *MovieLens*: in the main dataset there are iformation about 943 users and 1682 movies. Moreover, in all datasets users and movies ids start from $1$. 
 
-Let's consider the data exploration visualizations and results: 
+Let's see the data exploration visualizations and conclusion made from them: 
 
 The following figure (Figure 1) shows the distribution of movie ratings in the dataset. It can be observed that the majority of ratings fall within the range of $3$ to $5$, indicating that users generally rate movies positively.
 
@@ -62,17 +62,18 @@ To implement the ALS model, I use [implicit library](https://benfred.github.io/i
 ## Training Process and Evaluation
 
 After completing the data preprocessing, I tuned the hyperparameters of the ALS model. These hyperparameters include the number of latent factors to compute (`factors`), the regularization factor (`regularization`), and the number of iterations to use when fitting the data (`iterations`). I experimented with different combinations of these parameters and evaluated each model on a test set using the metrics MAP@10 and NDCG@10. Also, I computed the Precision@10 score for the evaluation. Then, based on the evaluation results, I found the best model with the following parameters:
+
 - `factors`: $30$;
 - `regularization`: $1.0$;
 - `iterations`: $200$.
 
 The evaluation metrics for this model on test set are as follows:
 
-- Precision@10: $0.2549$;
-- MAP@10: $0.1531$;
-- NDCG@10: $0.2899$.
+- *Precision@10*: $0.2549$;
+- *MAP@10*: $0.1531$;
+- *NDCG@10*: $0.2899$.
 
 
 ## Results
 
-The ALS model, with the tuned hyperparameters, demonstrates its effectiveness in generating relevant recommendations based on the user preferences. Also, it can predict the similar movies or users. For instance, upon making some examples, I found that when the model predicts 10 similar movies to 'The Lion King', it suggests movies like 'Home Alone', 'Bedknobs and Broomsticks', 'The Parent Trap', and 'Fly Away Home', which I personally believe would be relevant choices to watch after 'The Lion King'. Other examples you can see at the very bottom of the last notebook.
+The ALS model, with the tuned hyperparameters, demonstrates its effectiveness in generating relevant recommendations based on the user preferences. Also, it can predict the similar movies or users. For instance, upon making some examples, I found that when the model predicts 10 similar movies to `The Lion King`, it suggests movies like `Home Alone`, `Bedknobs and Broomsticks`, `The Parent Trap`, and `Fly Away Home`, which I personally believe would be relevant choices to watch after `The Lion King`. Other examples you can see at the very bottom of the last notebook.
