@@ -7,32 +7,32 @@ This report provides an overview and analysis of the Movie Recommender System de
 
 ## Data Analysis
 
-The data analysis phase involved exploring and understanding the dataset used. First of all, the key notes about data from MovieLens: in the main dataset there are iformation about 943 users and 1682 movies. Moreover, in all datasets users and movies ids start from 1 (not from 0). 
+The data analysis phase involved exploring and understanding the dataset used. First of all, the key notes about data from *MovieLens*: in the main dataset there are iformation about 943 users and 1682 movies. Moreover, in all datasets users and movies ids start from $1$ (not from $0$). 
 
 Let's consider the data exploration visualizations and results: 
 
+The following figure (Figure 1) shows the distribution of movie ratings in the dataset. It can be observed that the majority of ratings fall within the range of $3$ to $5$, indicating that users generally rate movies positively.
+
 ![Figure 1: Distribution of movie ratings](figures/fig1.png)
-
-Figure 1 shows the distribution of movie ratings in the dataset. It can be observed that the majority of ratings fall within the range of 3 to 5, indicating that users generally rate movies positively.
-
-![Figure 2: Genre distribution](figures/fig2.png)
 
 Figure 2 illustrates the genre distribution of movies in the dataset. It shows that the most common genres are `Drama` and `Comedy`, while `Unknown` and `Fantasy` are the least popular genres.
 
+![Figure 2: Genre distribution](figures/fig2.png)
+
+Figure 3 displays the distribution of user ages. As can be seen, the majority of users fall within the age range from $17$ to $35$.
+
 ![Figure 3: User age distribution](figures/fig3.png)
 
-Figure 3 displays the distribution of user ages. It indicates that the majority of users fall within the age range from 17 to 35.
-
+According to the Figure 4, there is a higher proportion of male users compared to female users:
 
 ![Figure 4: Gender distribution](figures/fig4.png)
 
-According to the Figure 4, there is a higher proportion of male users compared to female users.
+The most common activity of rating movies is among `students`:
 
 ![Figure 5: Occupation distribution](figures/fig5.png)
 
-The most common activity of rating movies is among students (See Figure 5).
 
-To sumup, the data analysis phase provided valuable insights into the dataset, which helped in understanding the characteristics of the data about movies and users.
+To sum up, the data analysis phase provided valuable insights into the dataset, which helped in understanding the characteristics of the data about movies and users.
 
 
 ## Model Overview, Advantages and Disadvantages
@@ -62,15 +62,15 @@ To implement the ALS model, I use [implicit library](https://benfred.github.io/i
 ## Training Process and Evaluation
 
 After completing the data preprocessing, I tuned the hyperparameters of the ALS model. These hyperparameters include the number of latent factors to compute (`factors`), the regularization factor (`regularization`), and the number of iterations to use when fitting the data (`iterations`). I experimented with different combinations of these parameters and evaluated each model on a test set using the metrics MAP@10 and NDCG@10. Also, I computed the Precision@10 score for the evaluation. Then, based on the evaluation results, I found the best model with the following parameters:
-- `factors`: 30;
-- `regularization`: 1.0;
-- `iterations`: 200.
+- `factors`: $30$;
+- `regularization`: $1.0$;
+- `iterations`: $200$.
 
 The evaluation metrics for this model on test set are as follows:
 
-- Precision@10: 0.2549;
-- MAP@10: 0.1531;
-- NDCG@10: 0.2899.
+- Precision@10: $0.2549$;
+- MAP@10: $0.1531$;
+- NDCG@10: $0.2899$.
 
 
 ## Results
