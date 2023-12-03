@@ -56,18 +56,17 @@ The ALS model used for recommendation systems has several advantages and disadva
 
 ## Model Implementation
 
-To implement the ALS model, I use [implicit library](https://benfred.github.io/implicit/index.html). They already provided the model, which aims to learn a binary target of whether each user has interacted with each item - but weights each binary interaction by a confidence value that in our case can be a rating. The implementation in implicit uses the values of a sparse matrix to represent the confidences, with the non zero entries representing whether or not the user has rated the movie. So, before using the model, I transformed the raw input data from `ua.base` (train) and `ua.test` (test) datasets to a sparse matrices. The next steps will be provided in the Training Process and Evaluation.
-
+To implement the ALS model, I use [implicit library](https://benfred.github.io/implicit/index.html). They already provided the model, which aims to learn a binary target of whether each user has interacted with each item - but weights each binary interaction by a confidence value that in our case can be a rating. The implementation in implicit uses the values of a sparse matrix to represent the confidences, with the non zero entries representing whether or not the user has rated the movie. So, before using the model, I transformed the raw input data from `ua.base` (train) and `ua.test` (test) datasets to a user-item sparse matrices. The next steps will be provided in the Training Process and Evaluation.
 
 ## Training Process and Evaluation
 
-After completing the data preprocessing, I tuned the hyperparameters of the ALS model. These hyperparameters include the number of latent factors to compute (`factors`), the regularization factor (`regularization`), and the number of iterations to use when fitting the data (`iterations`). I experimented with different combinations of these parameters and evaluated each model on a test set using the metrics MAP@10 and NDCG@10. Also, I computed the Precision@10 score for the evaluation. Then, based on the evaluation results, I found the best model with the following parameters:
+After completing the data preprocessing or transforming, I tuned the hyperparameters of the ALS model. These hyperparameters include the number of latent factors (`factors`), the regularization factor (`regularization`), and the number of iterations to use when fitting the data (`iterations`). I experimented with different combinations of these hyperparameters and evaluated each model on a test set using the metrics MAP@10 and NDCG@10. Also, I computed the Precision@10 score during the evaluation. Then, based on the evaluation results, I found the best model (with the highest MAP@10 and NDCG@10 scores) having the following hyperparameters:
 
 - `factors`: $30$;
 - `regularization`: $1.0$;
 - `iterations`: $200$.
 
-The evaluation metrics for this model on test set are as follows:
+The evaluation metrics for this model on test set (`ua.test`) are as follows:
 
 - *Precision@10*: $0.2549$;
 - *MAP@10*: $0.1531$;
@@ -76,4 +75,4 @@ The evaluation metrics for this model on test set are as follows:
 
 ## Results
 
-The ALS model, with the tuned hyperparameters, demonstrates its effectiveness in generating relevant recommendations based on the user preferences. Also, it can predict the similar movies or users. For instance, upon making some examples, I found that when the model predicts 10 similar movies to `The Lion King`, it suggests movies like `Home Alone`, `Bedknobs and Broomsticks`, `The Parent Trap`, and `Fly Away Home`, which I personally believe would be relevant choices to watch after `The Lion King`. Other examples you can see at the very bottom of the last notebook.
+As a result, the Alternating Least Squares (ALS) model, with the tuned hyperparameters, demonstrates its effectiveness in generating recommendations based on users' preferences. Also, the model can predict the similar movies or users. For instance, upon making some examples, I found that when the model predicts 10 similar movies to `The Lion King`, it suggests movies such as `Home Alone`, `Bedknobs and Broomsticks`, `The Parent Trap`, and `Fly Away Home`, which I personally believe would be relevant choices to watch after `The Lion King`. Other recommendation examples you can see at the very bottom of the last notebook.
